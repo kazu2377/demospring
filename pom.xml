@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.27</version> <!-- 最新のバージョンに置き換えてください -->
+			<version>8.0.27</version> <!-- 最新のaバージョンに置き換えてください -->
 		</dependency>
 		<!-- 既存の依存関係 -->
 		<dependency>
