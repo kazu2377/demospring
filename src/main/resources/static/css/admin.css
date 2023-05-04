@@ -1,0 +1,14 @@
+.container{
+padding-top:20px;
+padding-bottom:60px;
+}
+td>img,.sampleImg{
+width:200px;
+}
+input.form-control,
+.alert{
+	width:500px;
+}
+table.table{
+	width:70%;
+}

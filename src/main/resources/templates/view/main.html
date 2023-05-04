@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Donut Menu</title>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+  <div id="wrapper">
+    <h1>Donut Menu</h1>
+    <div id="menu">
+      <div th:each="donut : ${list}">
+        <img th:src="@{/upload/{imgname}(imgname=${donut.imgname})}">
+        <p th:text="${donut.name}"></p>
+        <p th:text="${donut.price} + '円'"></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

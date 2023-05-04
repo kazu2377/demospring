@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Update Donut</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+  <div id="wrapper">
+    <h1>Update Donut</h1>
+    <form action="/Admin/Update" method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td>商品名:</td>
+          <td>
+            <input type="text" name="name" th:value="${donut.name}" required>
+          </td>
+        </tr>
+        <tr>
+          <td>価格:</td>
+          <td>
+            <input type="number" name="price" step="10" th:value="${donut.price}" required>
+          </td>
+        </tr>
+        <tr>
+          <td>商品画像:</td>
+          <td>
+            <input type="file" name="imgname" id="imgname">
+            <img th:src="@{/upload/{imgname}(imgname=${donut.imgname})}" id="preview" width="100px" />
+            <input type="hidden" id="orgname" name="orgname" th:value="${donut.imgname}">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="hidden" name="id" th:value="${donut.id}">
+            <button type="submit">更新</button>
+          </td>
+
+        </tr>
+      </table>
+    </form>
+    <script>
+    window.onload = () => {
+    	  const inputFile = document.getElementById("imgname");
+    	  const previewImg = document.getElementById("preview");
+    	  const reader = new FileReader();
+    	  reader.addEventListener("load", () => {
+    	    previewImg.src = reader.result;
+    	  });
+    	  inputFile.addEventListener("change", () => {
+    	    reader.readAsDataURL(inputFile.files[0]);
+    	  });
+    	};
+
+    	document.addEventListener("DOMContentLoaded", function () {
+    	  const imgnameInput = document.getElementById("imgname");
+    	  const orgnameInput = document.getElementById("orgname");
+
+    	  imgnameInput.addEventListener("change", function (event) {
+    	    if (imgnameInput.files.length) {
+    	      orgnameInput.value = imgnameInput.files[0].name;
+    	    } else {
+    	      orgnameInput.value = "dn2.jpg"; // Reset to the default value if no file is selected
+    	    }
+    	  });
+    	});
+
+      </script>
+  </div>
+</body>
+</html>
